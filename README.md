@@ -88,6 +88,14 @@ The data selected for use covers total 9 years of data from year 2008 to 2017. T
 To process the data from dirty to clean, I chose to use **R.** This is because R is relatively fast and thus useful in dealing with huge dasets. R is also heavily supported by handy open-source Packages such as tidyvers,dplyr,ggplot2
 
 ### Cleaning And Transforming data 
+First I upload both  data set  of .csv format in R studio.During the next step I checked all columns and few rows of both datasets and rename some column names of matches.csv dataset based on the similarity of rows in deliveries.csv data set
+Next I check data types of both datasets and then replace data types of some columns
+
+## Analyze Data to Answer Questions
+
+In this step, I analyzed the cleaned data to find answers of the businesstask  differently.
+
+These are the my findings if the given business task after cleaning and analyzing data:-
 
 
 
