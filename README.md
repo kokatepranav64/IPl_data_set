@@ -51,25 +51,22 @@ you can download the data-set by [clicking on this link](https://www.kaggle.com/
 ## Business task
 The goal of this case study is to provide clear insightsby finding these:
 
->How many seasons we’ve got in the dataset?
->
->Which Team had won by maximum runs?
->
->Which Team(s) had won by maximum wicket?
->
->Which Team(s) had won by closest Margin (minimum runs)?
->
->Which Team had won by minimum wicket?
->
->Which Season had most number of matches?
->
->Barplot for season with more matches
->
->Which IPL Team is more successful?
->
->Barplot for team who won max matches
->
->Has Toss-winning helped in winning matches?
+* [How many seasons we’ve got in the dataset?]
+
+* [Which Team had won by maximum runs?]
+
+* [Which Team(s) had won by maximum wicket?]
+
+* [Which Team(s) had won by closest Margin (minimum runs)?]
+
+* [Which Team had won by minimum wicket?]
+
+* [Which Season had most number of matches? and Barplot for season with more matches.]
+
+* [Which IPL Team is more successful?]
+
+* [Barplot for team who won max matches]
+
 
 ## Preparing The data
 
@@ -132,35 +129,45 @@ total_no_matches_played
 
 ![image](https://user-images.githubusercontent.com/106038595/170573983-42b4849b-65af-43bc-8a84-e4e993526e5a.png)
 
-Which Team had won by maximum runs?
+Total Number of season ?
 ```R
 #counting total no of seasons 
 season_count = length(unique(matches$season))
 ```
+![image](https://user-images.githubusercontent.com/106038595/170581977-e7c03cff-aa55-402a-814c-aabbf6374165.png)
 
-Which Team(s) had won by maximum wicket?
+
+Which Team(s) had won by maximum Runs?
 ```R
 #team win by maximum no of runs
 runs_max = matches[which.max(matches$win_by_runs),]
 # this will display a full row but we want values in particular columns
 runs_max %>% select('winner','win_by_runs') # this will give us two column winner and winner by runs
 ```
+![image](https://user-images.githubusercontent.com/106038595/170582277-b13ea814-4d7e-4718-bcde-11705b8dbf30.png)
+
 Which Team(s) had won by maximum wicket?
 ```R
 #win by maximum wickets
 wic_max = matches[which.max(matches$win_by_wickets),]
 wic_max%>% select('winner','win_by_wickets')
 ```
-Which Team(s) had won by closest Margin (minimum runs)?
+![image](https://user-images.githubusercontent.com/106038595/170582446-7071a392-2392-4bdc-914f-e6230f55385b.png)
+
+Which Team(s) had won by minimum wickets?
 ```R
 #win by minimum wickets
 matches %>% filter(win_by_wickets != 0) %>% filter(win_by_wickets == min(win_by_wickets)) %>% select('winner','win_by_wickets')
 ```
-Which Team had won by minimum wicket?
+![image](https://user-images.githubusercontent.com/106038595/170582958-5eff141d-8e5a-4845-a9b3-89d137f871a0.png)
+
+Which Team had won by minimum runs?
 ```R
 #win by minimum runs
 matches %>% filter(win_by_runs != 0) %>% filter(win_by_runs ==min(win_by_runs)) %>% select('winner','win_by_runs')
 ````
+![image](https://user-images.githubusercontent.com/106038595/170583073-eb80323a-8642-405d-90ec-158e56d381e2.png)
+
 Which Season had most number of matches? and Barplot for season with more matches.
 ```R
 season_mt_cnt = matches %>% group_by(season) %>% summarise(match_cnt = n()) %>% ggplot() + geom_bar(aes(season,match_cnt, fill = season,color = 'red'), stat = 'identity')+ coord_flip()
@@ -174,11 +181,14 @@ Which IPL Team is more successful?
 #most successfull team
  matches %>% group_by(winner) %>% summarise(winner_count = n()) %>% filter(winner_count==max(winner_count))
  ```
+ 
 Barplot for team who won max matches
 ```R
 # visualiszation for teams that won maximum matches
  matches %>% group_by(winner) %>% summarise(winner_count = n()) %>% ggplot() +geom_bar(aes(winner,winner_count,fill = winner),stat = 'identity')+coord_flip()
  ```
+ ![image 2](Images/Rplot01.png)
+
 
 
 
