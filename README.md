@@ -166,8 +166,9 @@ Which Season had most number of matches? and Barplot for season with more matche
 season_mt_cnt = matches %>% group_by(season) %>% summarise(match_cnt = n()) %>% ggplot() + geom_bar(aes(season,match_cnt, fill = season,color = 'red'), stat = 'identity')+ coord_flip()
 ggplotly(season_mt_cnt)
 ```
-```
-![Image](Images/)
+
+![Image](Images/Rplot.png)
+
 Which IPL Team is more successful?
 ```R
 #most successfull team
